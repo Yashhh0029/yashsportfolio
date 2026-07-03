@@ -1272,7 +1272,7 @@ function Achievements() {
           <Metric value={4}  suffix=""   label="Deployments"      icon={<Cloud className="w-5 h-5" />} />
           <Metric value={1}  suffix=""   label="Internship"       icon={<Briefcase className="w-5 h-5" />} />
           <Metric value={1}  suffix=""   label="Research Concept" icon={<FlaskConical className="w-5 h-5" />} />
-          <Metric value={87} suffix="/100" label="CGPA (8.7)"     icon={<GraduationCap className="w-5 h-5" />} />
+          <Metric value={97} suffix="/100" label="CGPA (9.71)"     icon={<GraduationCap className="w-5 h-5" />} />
         </div>
       </div>
     </section>
