@@ -704,6 +704,7 @@ const PROJECTS: Project[] = [
       "On-device distilled inference",
     ],
     deployment: "FastAPI + containerized inference, ready for horizontal scaling.",
+    demo: "https://smart-spam-ai-classification-emxl.vercel.app/",
     metrics: [
       { label: "Models", value: "3+" },
       { label: "Signals", value: "20+" },
