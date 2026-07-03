@@ -1224,7 +1224,7 @@ function Experience() {
 /* ACHIEVEMENTS                                                 */
 /* ============================================================ */
 
-function useCounter(to: number, duration = 1.6) {
+function useCounter(to: number, duration = 1.6, decimals = 0) {
   const [n, setN] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
   useEffect(() => {
@@ -1234,7 +1234,8 @@ function useCounter(to: number, duration = 1.6) {
       const step = (ts: number) => {
         if (!start) start = ts;
         const p = Math.min(1, (ts - start) / (duration * 1000));
-        setN(Math.floor(p * to));
+        const f = 10 ** decimals;
+        setN(Math.floor(p * to * f) / f);
         if (p < 1) raf = requestAnimationFrame(step);
       };
       raf = requestAnimationFrame(step);
@@ -1246,8 +1247,8 @@ function useCounter(to: number, duration = 1.6) {
   return { n, ref };
 }
 
-function Metric({ value, suffix = "", label, icon }: { value: number; suffix?: string; label: string; icon: ReactNode }) {
-  const { n, ref } = useCounter(value);
+function Metric({ value, suffix = "", label, icon, decimals = 0 }: { value: number; suffix?: string; label: string; icon: ReactNode; decimals?: number }) {
+  const { n, ref } = useCounter(value, 1.6, decimals);
   return (
     <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
       className="glass-strong rounded-2xl p-6 text-center">
