@@ -531,7 +531,7 @@ function About() {
                   </div>
                 </div>
                 <div className="mt-4 grid grid-cols-3 gap-3 text-center">
-                  <Stat label="CGPA" value="8.7" />
+                  <Stat label="CGPA" value="9.71" />
                   <Stat label="Projects" value="5+" />
                   <Stat label="Focus" value="AI/ML" />
                 </div>
