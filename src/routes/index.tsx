@@ -742,6 +742,7 @@ const PROJECTS: Project[] = [
       "Real-time meeting copilot",
     ],
     deployment: "Streamed inference, containerized, GPU-optional.",
+    demo: "https://speech-to-text-ai-seven.vercel.app/",
     metrics: [
       { label: "Languages", value: "90+" },
       { label: "Latency", value: "Streaming" },
