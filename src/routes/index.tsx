@@ -1364,7 +1364,7 @@ function Contact() {
             className="relative">
             <div className="relative aspect-[4/5] rounded-3xl overflow-hidden glass-strong glow-cyan">
               <img src={casualPhoto} alt="Yash — casual portrait" className="w-full h-full object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent" />
               <div className="absolute bottom-6 left-6 right-6 space-y-2">
                 <ContactRow icon={<Mail className="w-4 h-4" />} label="Email" value="hello@yash.ai" href="mailto:hello@yash.ai" />
                 <ContactRow icon={<Github className="w-4 h-4" />} label="GitHub" value="github.com/yash" href="https://github.com" />
