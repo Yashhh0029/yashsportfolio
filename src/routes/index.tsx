@@ -1056,11 +1056,13 @@ function ProjectModal({ p, onClose }: { p: Project; onClose: () => void }) {
                     <span className="flex items-center gap-2 text-sm"><Github className="w-4 h-4" /> View on GitHub</span>
                     <ExternalLink className="w-4 h-4 text-muted-foreground" />
                   </a>
-                  <a href={p.demo ?? "#"} target="_blank" rel="noreferrer"
-                    className={"flex items-center justify-between glass rounded-xl px-4 py-3 hover:" + a.glow + " transition-all"}>
-                    <span className="flex items-center gap-2 text-sm"><Rocket className="w-4 h-4" /> Live Demo</span>
-                    <ExternalLink className="w-4 h-4 text-muted-foreground" />
-                  </a>
+                  {p.demo && (
+                    <a href={p.demo} target="_blank" rel="noreferrer"
+                      className={"flex items-center justify-between glass rounded-xl px-4 py-3 hover:" + a.glow + " transition-all"}>
+                      <span className="flex items-center gap-2 text-sm"><Rocket className="w-4 h-4" /> Live Demo</span>
+                      <ExternalLink className="w-4 h-4 text-muted-foreground" />
+                    </a>
+                  )}
                 </div>
               )}
             </aside>
