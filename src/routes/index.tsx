@@ -395,7 +395,7 @@ function Hero() {
           <motion.div style={{ rotateX: rx, rotateY: ry, transformStyle: "preserve-3d" }} className="relative w-full h-full">
             <div className="absolute inset-0 rounded-[2rem] overflow-hidden glass-strong glow-cyan">
               <img src={codingPhoto} alt="Yash coding on a Victus laptop — AI & ML Engineer" className="w-full h-full object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-70" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
               <div className="absolute inset-0 scanline pointer-events-none opacity-40" />
               {/* HUD overlays */}
               <div className="absolute top-4 left-4 right-4 flex justify-between text-[10px] font-mono text-cyan/90">
