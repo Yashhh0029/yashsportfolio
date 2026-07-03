@@ -666,6 +666,7 @@ const PROJECTS: Project[] = [
       "Push alerts with personalized thresholds",
     ],
     deployment: "Dockerized services, edge-cached tiles, ready for cloud deploy.",
+    demo: "https://climora-atmospheric-intelligence.onrender.com",
     metrics: [
       { label: "Forecast horizon", value: "7d" },
       { label: "Nowcast", value: "0–6h" },
