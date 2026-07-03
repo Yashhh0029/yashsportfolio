@@ -521,7 +521,7 @@ function About() {
             className="relative">
             <div className="relative aspect-[4/5] rounded-3xl overflow-hidden glass-strong glow-cyan">
               <img src={formalPhoto} alt="Yash — professional portrait" className="w-full h-full object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
               <div className="absolute bottom-6 left-6 right-6 glass rounded-xl p-4">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-lg bg-cyan/20 flex items-center justify-center"><GraduationCap className="w-5 h-5 text-cyan" /></div>
