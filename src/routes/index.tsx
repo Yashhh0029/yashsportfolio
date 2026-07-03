@@ -1254,7 +1254,7 @@ function Metric({ value, suffix = "", label, icon, decimals = 0 }: { value: numb
       className="glass-strong rounded-2xl p-6 text-center">
       <div className="w-10 h-10 rounded-xl glass flex items-center justify-center text-cyan mx-auto mb-3 glow-cyan">{icon}</div>
       <div className="text-4xl font-display font-bold text-gradient">
-        <span ref={ref}>{n}</span>{suffix}
+        <span ref={ref}>{n.toFixed(decimals)}</span>{suffix}
       </div>
       <div className="text-xs uppercase tracking-widest text-muted-foreground mt-1">{label}</div>
     </motion.div>
