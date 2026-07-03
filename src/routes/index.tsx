@@ -1224,7 +1224,7 @@ function Experience() {
 /* ACHIEVEMENTS                                                 */
 /* ============================================================ */
 
-function useCounter(to: number, duration = 1.6) {
+function useCounter(to: number, duration = 1.6, decimals = 0) {
   const [n, setN] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
   useEffect(() => {
@@ -1234,7 +1234,8 @@ function useCounter(to: number, duration = 1.6) {
       const step = (ts: number) => {
         if (!start) start = ts;
         const p = Math.min(1, (ts - start) / (duration * 1000));
-        setN(Math.floor(p * to));
+        const f = 10 ** decimals;
+        setN(Math.floor(p * to * f) / f);
         if (p < 1) raf = requestAnimationFrame(step);
       };
       raf = requestAnimationFrame(step);
@@ -1246,14 +1247,14 @@ function useCounter(to: number, duration = 1.6) {
   return { n, ref };
 }
 
-function Metric({ value, suffix = "", label, icon }: { value: number; suffix?: string; label: string; icon: ReactNode }) {
-  const { n, ref } = useCounter(value);
+function Metric({ value, suffix = "", label, icon, decimals = 0 }: { value: number; suffix?: string; label: string; icon: ReactNode; decimals?: number }) {
+  const { n, ref } = useCounter(value, 1.6, decimals);
   return (
     <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
       className="glass-strong rounded-2xl p-6 text-center">
       <div className="w-10 h-10 rounded-xl glass flex items-center justify-center text-cyan mx-auto mb-3 glow-cyan">{icon}</div>
       <div className="text-4xl font-display font-bold text-gradient">
-        <span ref={ref}>{n}</span>{suffix}
+        <span ref={ref}>{n.toFixed(decimals)}</span>{suffix}
       </div>
       <div className="text-xs uppercase tracking-widest text-muted-foreground mt-1">{label}</div>
     </motion.div>
@@ -1272,7 +1273,7 @@ function Achievements() {
           <Metric value={4}  suffix=""   label="Deployments"      icon={<Cloud className="w-5 h-5" />} />
           <Metric value={1}  suffix=""   label="Internship"       icon={<Briefcase className="w-5 h-5" />} />
           <Metric value={1}  suffix=""   label="Research Concept" icon={<FlaskConical className="w-5 h-5" />} />
-          <Metric value={97} suffix="/100" label="CGPA (9.71)"     icon={<GraduationCap className="w-5 h-5" />} />
+          <Metric value={9.71} decimals={2} suffix="" label="CGPA"     icon={<GraduationCap className="w-5 h-5" />} />
         </div>
       </div>
     </section>
