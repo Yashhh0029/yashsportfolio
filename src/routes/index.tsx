@@ -666,6 +666,7 @@ const PROJECTS: Project[] = [
       "Push alerts with personalized thresholds",
     ],
     deployment: "Dockerized services, edge-cached tiles, ready for cloud deploy.",
+    demo: "https://climora-atmospheric-intelligence.onrender.com",
     metrics: [
       { label: "Forecast horizon", value: "7d" },
       { label: "Nowcast", value: "0–6h" },
@@ -703,6 +704,7 @@ const PROJECTS: Project[] = [
       "On-device distilled inference",
     ],
     deployment: "FastAPI + containerized inference, ready for horizontal scaling.",
+    demo: "https://smart-spam-ai-classification-emxl.vercel.app/",
     metrics: [
       { label: "Models", value: "3+" },
       { label: "Signals", value: "20+" },
@@ -740,6 +742,7 @@ const PROJECTS: Project[] = [
       "Real-time meeting copilot",
     ],
     deployment: "Streamed inference, containerized, GPU-optional.",
+    demo: "https://speech-to-text-ai-seven.vercel.app/",
     metrics: [
       { label: "Languages", value: "90+" },
       { label: "Latency", value: "Streaming" },
@@ -886,6 +889,17 @@ function ProjectCard({ p, i, onOpen }: { p: Project; i: number; onOpen: () => vo
         ))}
         {p.stack.length > 5 && <span className="text-[10px] font-mono px-2 py-0.5 rounded-full glass">+{p.stack.length - 5}</span>}
       </div>
+      {p.demo && (
+        <a
+          href={p.demo}
+          target="_blank"
+          rel="noreferrer"
+          onClick={(e) => e.stopPropagation()}
+          className={"mt-4 inline-flex items-center gap-2 text-xs font-medium px-3 py-2 rounded-xl glass border border-white/10 hover:" + a.glow + " transition-all " + a.text}
+        >
+          <Rocket className="w-3.5 h-3.5" /> Live Demo <ExternalLink className="w-3 h-3 opacity-70" />
+        </a>
+      )}
     </motion.button>
   );
 }
@@ -1053,11 +1067,13 @@ function ProjectModal({ p, onClose }: { p: Project; onClose: () => void }) {
                     <span className="flex items-center gap-2 text-sm"><Github className="w-4 h-4" /> View on GitHub</span>
                     <ExternalLink className="w-4 h-4 text-muted-foreground" />
                   </a>
-                  <a href={p.demo ?? "#"} target="_blank" rel="noreferrer"
-                    className={"flex items-center justify-between glass rounded-xl px-4 py-3 hover:" + a.glow + " transition-all"}>
-                    <span className="flex items-center gap-2 text-sm"><Rocket className="w-4 h-4" /> Live Demo</span>
-                    <ExternalLink className="w-4 h-4 text-muted-foreground" />
-                  </a>
+                  {p.demo && (
+                    <a href={p.demo} target="_blank" rel="noreferrer"
+                      className={"flex items-center justify-between glass rounded-xl px-4 py-3 hover:" + a.glow + " transition-all"}>
+                      <span className="flex items-center gap-2 text-sm"><Rocket className="w-4 h-4" /> Live Demo</span>
+                      <ExternalLink className="w-4 h-4 text-muted-foreground" />
+                    </a>
+                  )}
                 </div>
               )}
             </aside>
