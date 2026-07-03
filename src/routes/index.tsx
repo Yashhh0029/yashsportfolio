@@ -889,6 +889,17 @@ function ProjectCard({ p, i, onOpen }: { p: Project; i: number; onOpen: () => vo
         ))}
         {p.stack.length > 5 && <span className="text-[10px] font-mono px-2 py-0.5 rounded-full glass">+{p.stack.length - 5}</span>}
       </div>
+      {p.demo && (
+        <a
+          href={p.demo}
+          target="_blank"
+          rel="noreferrer"
+          onClick={(e) => e.stopPropagation()}
+          className={"mt-4 inline-flex items-center gap-2 text-xs font-medium px-3 py-2 rounded-xl glass border border-white/10 hover:" + a.glow + " transition-all " + a.text}
+        >
+          <Rocket className="w-3.5 h-3.5" /> Live Demo <ExternalLink className="w-3 h-3 opacity-70" />
+        </a>
+      )}
     </motion.button>
   );
 }
