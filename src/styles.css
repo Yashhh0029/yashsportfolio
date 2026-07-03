@@ -45,8 +45,8 @@
   --card-foreground: oklch(0.97 0.01 220);
   --popover: oklch(0.16 0.04 250);
   --popover-foreground: oklch(0.97 0.01 220);
-  --primary: oklch(0.85 0.18 200);
-  --primary-foreground: oklch(0.13 0.03 250);
+  --primary: oklch(0.72 0.20 270);
+  --primary-foreground: oklch(0.13 0.03 265);
   --secondary: oklch(0.65 0.22 255);
   --secondary-foreground: oklch(0.97 0.01 220);
   --muted: oklch(0.22 0.03 250);
@@ -59,16 +59,16 @@
   --input: oklch(1 0 0 / 8%);
   --ring: oklch(0.85 0.18 200 / 60%);
 
-  --cyan: oklch(0.88 0.18 200);
-  --electric: oklch(0.68 0.22 255);
-  --neon-purple: oklch(0.65 0.25 300);
+  --cyan: oklch(0.96 0.02 260);
+  --electric: oklch(0.62 0.24 265);
+  --neon-purple: oklch(0.62 0.28 300);
   --soft-orange: oklch(0.78 0.16 55);
 
-  --gradient-hero: radial-gradient(ellipse at top, oklch(0.25 0.12 250 / 0.6), transparent 60%),
-                   radial-gradient(ellipse at bottom right, oklch(0.35 0.18 300 / 0.35), transparent 55%),
-                   linear-gradient(180deg, oklch(0.10 0.03 250), oklch(0.13 0.04 255));
+  --gradient-hero: radial-gradient(ellipse at top, oklch(0.30 0.15 265 / 0.55), transparent 60%),
+                   radial-gradient(ellipse at bottom right, oklch(0.35 0.20 300 / 0.35), transparent 55%),
+                   linear-gradient(180deg, oklch(0.10 0.03 265), oklch(0.13 0.05 275));
   --gradient-cyan: linear-gradient(135deg, var(--cyan), var(--electric));
-  --gradient-neon: linear-gradient(135deg, var(--cyan) 0%, var(--electric) 45%, var(--neon-purple) 100%);
+  --gradient-neon: linear-gradient(135deg, oklch(0.98 0.01 260) 0%, var(--electric) 50%, var(--neon-purple) 100%);
   --shadow-glow: 0 0 40px oklch(0.85 0.18 200 / 0.35), 0 0 90px oklch(0.68 0.22 255 / 0.25);
   --shadow-glow-purple: 0 0 40px oklch(0.65 0.25 300 / 0.4);
   --shadow-glow-orange: 0 0 40px oklch(0.78 0.16 55 / 0.35);
