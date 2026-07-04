@@ -11,6 +11,7 @@ import {
 import heroPhoto from "@/assets/yash-hero.jpeg";
 import formalPhoto from "@/assets/yash-formal.jpeg";
 import casualPhoto from "@/assets/yash-casual.jpeg";
+import resumeAsset from "@/assets/Yash_AIML_Resume.pdf.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Portfolio,
@@ -365,7 +366,7 @@ function Hero() {
             <CTA onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}>
               <Mail className="w-4 h-4" /> Contact Me
             </CTA>
-            <CTA>
+            <CTA href={resumeAsset.url} download="Yash_AIML_Resume.pdf">
               <Download className="w-4 h-4" /> Download Resume
             </CTA>
           </div>
@@ -463,17 +464,21 @@ function TypeSwitch({ words }: { words: string[] }) {
   );
 }
 
-function CTA({ children, onClick, primary = false }: { children: ReactNode; onClick?: () => void; primary?: boolean }) {
+function CTA({ children, onClick, href, download, primary = false }: { children: ReactNode; onClick?: () => void; href?: string; download?: string | boolean; primary?: boolean }) {
+  const cls =
+    "group relative inline-flex items-center gap-2 px-5 py-3 rounded-xl font-medium text-sm transition-all " +
+    (primary
+      ? "bg-gradient-to-r from-cyan to-electric text-background glow-cyan"
+      : "glass hover:border-cyan/40 hover:glow-cyan");
+  if (href) {
+    return (
+      <motion.a href={href} download={download} whileHover={{ scale: 1.03, y: -2 }} whileTap={{ scale: 0.97 }} className={cls}>
+        {children}
+      </motion.a>
+    );
+  }
   return (
-    <motion.button
-      onClick={onClick} whileHover={{ scale: 1.03, y: -2 }} whileTap={{ scale: 0.97 }}
-      className={
-        "group relative inline-flex items-center gap-2 px-5 py-3 rounded-xl font-medium text-sm transition-all " +
-        (primary
-          ? "bg-gradient-to-r from-cyan to-electric text-background glow-cyan"
-          : "glass hover:border-cyan/40 hover:glow-cyan")
-      }
-    >
+    <motion.button onClick={onClick} whileHover={{ scale: 1.03, y: -2 }} whileTap={{ scale: 0.97 }} className={cls}>
       {children}
     </motion.button>
   );
@@ -1410,7 +1415,7 @@ function Contact() {
                 className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-cyan to-electric text-background font-medium text-sm glow-cyan hover:scale-[1.02] transition-transform">
                 <Zap className="w-4 h-4" /> Transmit message
               </button>
-              <a href="#" className="inline-flex items-center gap-2 px-5 py-3 rounded-xl glass text-sm hover:glow-cyan transition-all">
+              <a href={resumeAsset.url} download="Yash_AIML_Resume.pdf" className="inline-flex items-center gap-2 px-5 py-3 rounded-xl glass text-sm hover:glow-cyan transition-all">
                 <Download className="w-4 h-4" /> Download Resume
               </a>
               {sent && (
