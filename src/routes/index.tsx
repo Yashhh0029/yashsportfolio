@@ -464,17 +464,21 @@ function TypeSwitch({ words }: { words: string[] }) {
   );
 }
 
-function CTA({ children, onClick, primary = false }: { children: ReactNode; onClick?: () => void; primary?: boolean }) {
+function CTA({ children, onClick, href, download, primary = false }: { children: ReactNode; onClick?: () => void; href?: string; download?: string | boolean; primary?: boolean }) {
+  const cls =
+    "group relative inline-flex items-center gap-2 px-5 py-3 rounded-xl font-medium text-sm transition-all " +
+    (primary
+      ? "bg-gradient-to-r from-cyan to-electric text-background glow-cyan"
+      : "glass hover:border-cyan/40 hover:glow-cyan");
+  if (href) {
+    return (
+      <motion.a href={href} download={download} whileHover={{ scale: 1.03, y: -2 }} whileTap={{ scale: 0.97 }} className={cls}>
+        {children}
+      </motion.a>
+    );
+  }
   return (
-    <motion.button
-      onClick={onClick} whileHover={{ scale: 1.03, y: -2 }} whileTap={{ scale: 0.97 }}
-      className={
-        "group relative inline-flex items-center gap-2 px-5 py-3 rounded-xl font-medium text-sm transition-all " +
-        (primary
-          ? "bg-gradient-to-r from-cyan to-electric text-background glow-cyan"
-          : "glass hover:border-cyan/40 hover:glow-cyan")
-      }
-    >
+    <motion.button onClick={onClick} whileHover={{ scale: 1.03, y: -2 }} whileTap={{ scale: 0.97 }} className={cls}>
       {children}
     </motion.button>
   );
