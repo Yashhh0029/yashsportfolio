@@ -8,7 +8,7 @@ import {
   Briefcase, Target, FlaskConical, Wand2, Radar, Waves, X, Menu, ArrowUpRight,
 } from "lucide-react";
 
-import codingPhoto from "@/assets/yash-coding.jpeg";
+import heroPhoto from "@/assets/yash-hero.jpeg";
 import formalPhoto from "@/assets/yash-formal.jpeg";
 import casualPhoto from "@/assets/yash-casual.jpeg";
 
@@ -394,7 +394,7 @@ function Hero() {
         >
           <motion.div style={{ rotateX: rx, rotateY: ry, transformStyle: "preserve-3d" }} className="relative w-full h-full">
             <div className="absolute inset-0 rounded-[2rem] overflow-hidden glass-strong glow-cyan">
-              <img src={codingPhoto} alt="Yash coding on a Victus laptop — AI & ML Engineer" className="w-full h-full object-cover" />
+              <img src={heroPhoto} alt="Yash — AI & ML Engineer at workstation" className="w-full h-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
               <div className="absolute inset-0 scanline pointer-events-none opacity-40" />
               {/* HUD overlays */}
@@ -527,7 +527,7 @@ function About() {
                   <div className="w-10 h-10 rounded-lg bg-cyan/20 flex items-center justify-center"><GraduationCap className="w-5 h-5 text-cyan" /></div>
                   <div>
                     <div className="font-display font-semibold">Currently Studying</div>
-                    <div className="text-xs text-muted-foreground">B.Tech · Computer Science · AI/ML focus</div>
+                    <div className="text-xs text-muted-foreground">B.Tech in AI & ML Engineering</div>
                   </div>
                 </div>
                 <div className="mt-4 grid grid-cols-3 gap-3 text-center">
@@ -1209,7 +1209,7 @@ function Experience() {
       body: "Designed, built and shipped end-to-end AI systems: Climora, Smart Spam AI, Nexus Speech AI and JARVIS. Owned the full loop — data, modeling, deployment, UX." },
     { role: "AI/ML Internship", org: "Applied ML Team", period: "Summer",
       body: "Contributed to production ML workflows: data preprocessing, model training, evaluation and deployment on cloud infrastructure." },
-    { role: "B.Tech — Computer Science (AI/ML focus)", org: "Undergraduate", period: "Ongoing",
+    { role: "B.Tech in AI & ML Engineering", org: "Undergraduate", period: "Ongoing",
       body: "Foundations in algorithms, systems and mathematics — with a self-directed depth in machine learning, deep learning and NLP." },
   ];
   return (
@@ -1383,9 +1383,9 @@ function Contact() {
               <img src={casualPhoto} alt="Yash — casual portrait" className="w-full h-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent" />
               <div className="absolute bottom-6 left-6 right-6 space-y-2">
-                <ContactRow icon={<Mail className="w-4 h-4" />} label="Email" value="hello@yash.ai" href="mailto:hello@yash.ai" />
-                <ContactRow icon={<Github className="w-4 h-4" />} label="GitHub" value="github.com/yash" href="https://github.com" />
-                <ContactRow icon={<Linkedin className="w-4 h-4" />} label="LinkedIn" value="linkedin.com/in/yash" href="https://linkedin.com" />
+                <ContactRow icon={<Mail className="w-4 h-4" />} label="Email" value="yashkadam2900@gmail.com" href="mailto:yashkadam2900@gmail.com" />
+                <ContactRow icon={<Github className="w-4 h-4" />} label="GitHub" value="github.com/Yashhh0029" href="https://github.com/Yashhh0029" />
+                <ContactRow icon={<Linkedin className="w-4 h-4" />} label="LinkedIn" value="linkedin.com/in/yash-kadam-15ba59350" href="https://www.linkedin.com/in/yash-kadam-15ba59350" />
               </div>
             </div>
           </motion.div>
@@ -1463,11 +1463,11 @@ function Footer() {
           <span className="text-xs text-muted-foreground ml-2">© {new Date().getFullYear()} — Building intelligent systems.</span>
         </div>
         <div className="flex items-center gap-3">
-          <a href="https://github.com" target="_blank" rel="noreferrer" aria-label="GitHub"
+          <a href="https://github.com/Yashhh0029" target="_blank" rel="noreferrer" aria-label="GitHub"
             className="w-9 h-9 rounded-lg glass flex items-center justify-center hover:glow-cyan"><Github className="w-4 h-4" /></a>
-          <a href="https://linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn"
+          <a href="https://www.linkedin.com/in/yash-kadam-15ba59350" target="_blank" rel="noreferrer" aria-label="LinkedIn"
             className="w-9 h-9 rounded-lg glass flex items-center justify-center hover:glow-cyan"><Linkedin className="w-4 h-4" /></a>
-          <a href="mailto:hello@yash.ai" aria-label="Email"
+          <a href="mailto:yashkadam2900@gmail.com" aria-label="Email"
             className="w-9 h-9 rounded-lg glass flex items-center justify-center hover:glow-cyan"><Mail className="w-4 h-4" /></a>
         </div>
       </div>
