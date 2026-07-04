@@ -1415,7 +1415,7 @@ function Contact() {
                 className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-cyan to-electric text-background font-medium text-sm glow-cyan hover:scale-[1.02] transition-transform">
                 <Zap className="w-4 h-4" /> Transmit message
               </button>
-              <a href="#" className="inline-flex items-center gap-2 px-5 py-3 rounded-xl glass text-sm hover:glow-cyan transition-all">
+              <a href={resumeAsset.url} download="Yash_AIML_Resume.pdf" className="inline-flex items-center gap-2 px-5 py-3 rounded-xl glass text-sm hover:glow-cyan transition-all">
                 <Download className="w-4 h-4" /> Download Resume
               </a>
               {sent && (
