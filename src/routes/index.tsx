@@ -11,6 +11,7 @@ import {
 import heroPhoto from "@/assets/yash-hero.jpeg";
 import formalPhoto from "@/assets/yash-formal.jpeg";
 import casualPhoto from "@/assets/yash-casual.jpeg";
+import resumeAsset from "@/assets/Yash_AIML_Resume.pdf.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Portfolio,
