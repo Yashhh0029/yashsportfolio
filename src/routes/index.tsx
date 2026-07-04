@@ -366,7 +366,7 @@ function Hero() {
             <CTA onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}>
               <Mail className="w-4 h-4" /> Contact Me
             </CTA>
-            <CTA>
+            <CTA href={resumeAsset.url} download="Yash_AIML_Resume.pdf">
               <Download className="w-4 h-4" /> Download Resume
             </CTA>
           </div>
