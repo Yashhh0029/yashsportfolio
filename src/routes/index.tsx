@@ -1373,7 +1373,36 @@ function Research() {
 /* ============================================================ */
 
 function Contact() {
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState<string>("");
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const fd = new FormData(form);
+    const name = String(fd.get("name") ?? "").trim();
+    const email = String(fd.get("email") ?? "").trim();
+    const subject = String(fd.get("subject") ?? "").trim();
+    const message = String(fd.get("message") ?? "").trim();
+
+    if (!name || !email || !message) { setStatus("error"); setErrorMsg("Please fill in name, email and message."); return; }
+    if (name.length > 100 || email.length > 255 || subject.length > 200 || message.length > 5000) {
+      setStatus("error"); setErrorMsg("One of the fields is too long."); return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { setStatus("error"); setErrorMsg("Please enter a valid email."); return; }
+
+    setStatus("sending");
+    const { supabase } = await import("@/integrations/supabase/client");
+    const { error } = await supabase.from("contact_messages").insert({
+      name, email, subject: subject || null, message,
+    });
+    if (error) { setStatus("error"); setErrorMsg("Could not send. Please try again."); return; }
+
+    form.reset();
+    setStatus("sent");
+    setTimeout(() => setStatus("idle"), 4000);
+  }
+
   return (
     <section id="contact" className="relative py-32">
       <div className="container mx-auto px-6">
@@ -1396,7 +1425,7 @@ function Contact() {
           </motion.div>
 
           <motion.form
-            onSubmit={(e) => { e.preventDefault(); setSent(true); setTimeout(() => setSent(false), 3500); }}
+            onSubmit={handleSubmit}
             initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
             className="glass-strong rounded-3xl p-6 md:p-8 space-y-4"
           >
@@ -1407,20 +1436,24 @@ function Contact() {
             <Field label="Subject" name="subject" placeholder="What's on your mind?" />
             <div>
               <label className="text-[10px] font-mono uppercase tracking-widest text-cyan/80">Message</label>
-              <textarea name="message" rows={5} required placeholder="Share your idea, role or question..."
+              <textarea name="message" rows={5} required maxLength={5000} placeholder="Share your idea, role or question..."
                 className="mt-2 w-full glass rounded-xl px-4 py-3 text-sm outline-none focus:border-cyan/50 focus:glow-cyan resize-none placeholder:text-muted-foreground" />
             </div>
             <div className="flex items-center gap-3 flex-wrap">
-              <button type="submit"
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-cyan to-electric text-background font-medium text-sm glow-cyan hover:scale-[1.02] transition-transform">
-                <Zap className="w-4 h-4" /> Transmit message
+              <button type="submit" disabled={status === "sending"}
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-cyan to-electric text-background font-medium text-sm glow-cyan hover:scale-[1.02] transition-transform disabled:opacity-60 disabled:cursor-not-allowed">
+                <Zap className="w-4 h-4" /> {status === "sending" ? "Transmitting..." : "Transmit message"}
               </button>
               <a href={resumeAsset.url} download="Yash_AIML_Resume.pdf" className="inline-flex items-center gap-2 px-5 py-3 rounded-xl glass text-sm hover:glow-cyan transition-all">
                 <Download className="w-4 h-4" /> Download Resume
               </a>
-              {sent && (
+              {status === "sent" && (
                 <motion.span initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }}
                   className="text-xs font-mono text-cyan">Signal received. I'll respond shortly ✓</motion.span>
+              )}
+              {status === "error" && (
+                <motion.span initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }}
+                  className="text-xs font-mono text-red-400">{errorMsg}</motion.span>
               )}
             </div>
           </motion.form>
@@ -1429,6 +1462,7 @@ function Contact() {
     </section>
   );
 }
+
 
 function ContactRow({ icon, label, value, href }: { icon: ReactNode; label: string; value: string; href: string }) {
   return (
