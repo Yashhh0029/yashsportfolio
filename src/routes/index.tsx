@@ -1392,11 +1392,22 @@ function Contact() {
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { setStatus("error"); setErrorMsg("Please enter a valid email."); return; }
 
     setStatus("sending");
-    const { supabase } = await import("@/integrations/supabase/client");
-    const { error } = await supabase.from("contact_messages").insert({
-      name, email, subject: subject || null, message,
-    });
-    if (error) { setStatus("error"); setErrorMsg("Could not send. Please try again."); return; }
+    try {
+      const res = await fetch("/api/public/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, subject, message }),
+      });
+      if (!res.ok) {
+        setStatus("error");
+        setErrorMsg("Could not send. Please try again.");
+        return;
+      }
+    } catch {
+      setStatus("error");
+      setErrorMsg("Network error. Please try again.");
+      return;
+    }
 
     form.reset();
     setStatus("sent");
