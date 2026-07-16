@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { createClient } from "@supabase/supabase-js";
 import type { Database } from "@/integrations/supabase/types";
 
-const OWNER_EMAIL = "yashkadam2900@gmail.com";
+const OWNER_EMAIL = "stuffwork1314@gmail.com";
 
 function b64url(input: string) {
   // btoa is available in the Worker runtime
