@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { createClient } from "@supabase/supabase-js";
 import type { Database } from "@/integrations/supabase/types";
 
-const OWNER_EMAIL = "yashkadam2900@gmail.com";
+const OWNER_EMAIL = "stuffwork1314@gmail.com";
 
 function b64url(input: string) {
   // btoa is available in the Worker runtime
@@ -119,6 +119,12 @@ function validate(input: unknown) {
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return null;
   if (subject.length > 200) return null;
   if (!message || message.length > 5000) return null;
+  // Block CR/LF and other control chars in header-bound fields to prevent
+  // email header injection (e.g. sneaking in Bcc: attacker@... via subject).
+  const HEADER_UNSAFE = /[\r\n\u0000-\u001f\u007f]/;
+  if (HEADER_UNSAFE.test(name) || HEADER_UNSAFE.test(subject) || HEADER_UNSAFE.test(email)) {
+    return null;
+  }
   return { name, email, subject: subject || null, message };
 }
 
