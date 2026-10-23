@@ -6,19 +6,20 @@ import {
   ArrowRight, Sparkles, Zap, Activity, Shield, Mic, Bot, HeartPulse, ExternalLink,
   ChevronRight, Terminal, Layers, LineChart, GitBranch, Star, Award, GraduationCap,
   Briefcase, Target, FlaskConical, Wand2, Radar, Waves, X, Menu, ArrowUpRight,
+  MapPin, ShieldCheck, ScanLine, Users, EyeOff,
 } from "lucide-react";
 
 import heroPhoto from "@/assets/yash-hero.jpeg";
 import formalPhoto from "@/assets/yash-formal.jpeg";
 import casualPhoto from "@/assets/yash-casual.jpeg";
-import resumeAsset from "@/assets/Yash_AIML_Resume.pdf.asset.json";
+import resumeAsset from "@/assets/Yash_kadam_9168510029.pdf.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Portfolio,
   head: () => ({
     meta: [
       { title: "Yash — AI & ML Engineer | Intelligent Systems Portfolio" },
-      { name: "description", content: "Portfolio of Yash — AI & ML Engineer. Building intelligent systems: production ML pipelines, NLP, speech intelligence, and applied research including a Human Digital Twin." },
+      { name: "description", content: "Portfolio of Yash — AI & ML Engineer. Building intelligent systems: NEST community matching, PRIVASCOPE data firewall, production ML pipelines, NLP, speech intelligence, and applied research." },
       { property: "og:title", content: "Yash — AI & ML Engineer" },
       { property: "og:description", content: "AI command center portfolio featuring Climora, Smart Spam AI, Nexus Speech AI, JARVIS, and the Human Digital Twin research concept." },
     ],
@@ -629,10 +630,100 @@ type Project = {
   demo?: string;
   concept?: boolean;
   metrics?: { label: string; value: string }[];
-  visual: "climora" | "spam" | "speech" | "jarvis" | "twin";
+  visual: "nest" | "privascope" | "climora" | "spam" | "speech" | "jarvis" | "twin";
 };
 
 const PROJECTS: Project[] = [
+  {
+    id: "nest",
+    name: "NEST",
+    tagline: "Find Your People. Find Your Place.",
+    theme: "Community Intelligence",
+    accent: "purple",
+    icon: <MapPin className="w-5 h-5" />,
+    visual: "nest",
+    overview:
+      "NEST is an AI-powered community intelligence and hyper-local matching platform that connects newcomers with verified local helpers. Users simply post what they need in plain English — NEST extracts semantic intent, isolates the geographic target, and runs dense vector matching to pair them directly with the right people.",
+    problem:
+      "Moving to a new city is overwhelming: housing, transport, services, language. Existing platforms are either ad-filled commercial directories or social feeds where requests get buried. NEST inverts discovery — the need comes first, the person second.",
+    architecture: [
+      "Natural language parsing of needs — target neighborhoods, budgets, urgency",
+      "384-d sentence-transformer (MiniLM) embeddings computed locally on CPU",
+      "Native pgvector cosine similarity search in PostgreSQL 16 with HNSW indexing",
+      "Hybrid multi-factor scorer: semantic 40% · location 25% · experience 15% · reputation 10% · availability 10%",
+      "Dual WebSocket + REST chat gateway with exponential-backoff fallback",
+      "Safety layer: blocking, structured reporting and moderation audit logs",
+    ],
+    features: [
+      "AI radar matching within a 20 km geographic boundary",
+      "Real-time chat with in-chat translation across 11 languages",
+      "Mutual-consent connections & safe conversation reactivation",
+      "Privacy masking — helper coordinates blurred to ~1.1 km zones",
+      "Bidirectional blocking + structured in-app reporting",
+    ],
+    stack: ["React 19", "TypeScript", "FastAPI", "PostgreSQL 16", "pgvector", "Sentence-Transformers", "WebSocket", "TailwindCSS"],
+    challenges: [
+      "Decoupling physical device location from the relocation request's target location",
+      "Deterministic lifecycle state machine (UNRESOLVED → RESOLVED) with reputation integrity across reactivations",
+    ],
+    roadmap: [
+      "Voice-posted needs with on-device transcription",
+      "Multi-city expansion with region-specific helper verification",
+    ],
+    deployment: "Live on Vercel (frontend) + Render (FastAPI) + Neon PostgreSQL 16.",
+    demo: "https://nest-seven-silk.vercel.app",
+    github: "https://github.com/Yashhh0029/NEST",
+    metrics: [
+      { label: "Tests", value: "371✓" },
+      { label: "Match", value: "5-Factor" },
+      { label: "Vector", value: "384-d" },
+    ],
+  },
+  {
+    id: "privascope",
+    name: "PRIVASCOPE",
+    tagline: "Protect before your data leaves your device.",
+    theme: "Privacy Engineering",
+    accent: "electric",
+    icon: <ShieldCheck className="w-5 h-5" />,
+    visual: "privascope",
+    overview:
+      "PRIVASCOPE is an AI-assisted personal data firewall that inspects documents and outbound AI prompts locally, protecting Indian personal identifiers before any data crosses a network boundary. Built on a zero-raw-cloud-exposure invariant — raw PII never leaves the device.",
+    problem:
+      "Users routinely share Aadhaar, PAN, bank details and more with AI providers and third parties without realizing it. PRIVASCOPE stops raw sensitive data from ever crossing the network boundary.",
+    architecture: [
+      "Indian identifier detection: Aadhaar (Verhoeff checksum), PAN, mobile, UPI, IFSC, bank accounts",
+      "Document firewall: true PDF content-stream redaction, DOCX/XLSX/CSV sanitization, OCR for images",
+      "Context-aware sharing purpose engine across 8 real-world sharing contexts",
+      "AI gateway policy engine: real-time ALLOW / WARN / PROTECT / BLOCK decisions",
+      "Reversible token pseudonymization with a volatile session-scoped vault",
+      "FastAPI core with JWT + Google OIDC auth, rate limiting and PII-scrubbed logging",
+    ],
+    features: [
+      "True PDF content-stream redaction with automated verification pass",
+      "Local pseudonymization — AI providers see only tokens like <AADHAAR_01>",
+      "Browser token rehydration for private AI response interpretation",
+      "Binary magic-byte validation against disguised payloads",
+      "Coordinate heatmaps + high-resolution visual previews",
+    ],
+    stack: ["FastAPI", "React 18", "TypeScript", "PyMuPDF", "EasyOCR", "PostgreSQL", "SQLAlchemy", "JWT/OIDC"],
+    challenges: [
+      "Enforcing the zero-raw-cloud-exposure invariant across every inspection path",
+      "Context heuristics that suppress false positives without missing real identifiers",
+    ],
+    roadmap: [
+      "On-device WASM detection engine for a fully offline mode",
+      "Regional-language document support",
+    ],
+    deployment: "Live on Vercel (frontend) + Render (FastAPI) + Supabase PostgreSQL — ₹0 free-tier stack.",
+    demo: "https://privascope-mu.vercel.app",
+    github: "https://github.com/Yashhh0029/PRIVASCOPE",
+    metrics: [
+      { label: "Identifiers", value: "7+" },
+      { label: "Policy", value: "4-Level" },
+      { label: "Exposure", value: "Zero" },
+    ],
+  },
   {
     id: "climora",
     name: "Climora",
@@ -911,6 +1002,40 @@ function ProjectCard({ p, i, onOpen }: { p: Project; i: number; onOpen: () => vo
 
 function ProjectVisual({ variant, accent }: { variant: Project["visual"]; accent: Project["accent"] }) {
   const a = ACCENT[accent];
+  if (variant === "nest") return (
+    <div className="absolute inset-0 bg-gradient-to-br from-[color:var(--neon-purple)]/15 via-background to-[color:var(--electric)]/10 overflow-hidden">
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="relative w-44 h-44">
+          {[0, 1, 2].map((r) => (
+            <div key={r} className="absolute rounded-full border border-[color:var(--neon-purple)]/40"
+              style={{ inset: `${r * 22}%`, animation: `pulse-ring 2.4s ease-out ${r * 0.5}s infinite` }} />
+          ))}
+          <div className="absolute inset-0 rounded-full glass-strong flex items-center justify-center glow-purple">
+            <Users className="w-8 h-8 text-[color:var(--neon-purple)]" />
+          </div>
+          {[...Array(6)].map((_, i) => (
+            <span key={i} className="absolute w-2.5 h-2.5 rounded-full bg-[color:var(--electric)] shadow-[0_0_10px_var(--electric)]"
+              style={{
+                left: `${50 + 42 * Math.cos((i * 60 * Math.PI) / 180)}%`,
+                top: `${50 + 42 * Math.sin((i * 60 * Math.PI) / 180)}%`,
+                animation: `float ${2.5 + i % 3}s ease-in-out ${i * 0.2}s infinite`,
+              }} />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+  if (variant === "privascope") return (
+    <div className="absolute inset-0 bg-gradient-to-br from-[color:var(--electric)]/15 via-background to-[color:var(--cyan)]/10 flex items-center justify-center overflow-hidden">
+      <div className="relative">
+        <ShieldCheck className="w-36 h-36 text-[color:var(--electric)] opacity-80 drop-shadow-[0_0_18px_var(--electric)]" />
+        <motion.div className="absolute -inset-x-6 h-0.5 bg-gradient-to-r from-transparent via-[color:var(--electric)] to-transparent"
+          animate={{ top: ["10%", "85%", "10%"] }}
+          transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut" }} />
+        <ScanLine className="absolute -bottom-3 -right-3 w-8 h-8 text-[color:var(--electric)]/70" />
+      </div>
+    </div>
+  );
   if (variant === "climora") return (
     <div className="absolute inset-0 bg-gradient-to-br from-[color:var(--cyan)]/15 via-background to-[color:var(--electric)]/10">
       {[...Array(30)].map((_, i) => (
