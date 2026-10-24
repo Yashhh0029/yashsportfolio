@@ -1112,7 +1112,7 @@ function ProjectModal({ p, onClose }: { p: Project; onClose: () => void }) {
             <ProjectVisual variant={p.visual} accent={p.accent} />
             <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
             <button onClick={onClose} aria-label="Close"
-              className="absolute top-4 right-4 w-10 h-10 rounded-full glass flex items-center justify-center hover:glow-cyan">
+              className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full glass flex items-center justify-center hover:glow-cyan">
               <X className="w-4 h-4" />
             </button>
             <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4 flex-wrap">
