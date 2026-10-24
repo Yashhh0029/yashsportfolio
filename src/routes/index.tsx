@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 
 import heroPhoto from "@/assets/yash-hero.jpeg";
-import formalPhoto from "@/assets/yash-formal.jpeg";
+import formalPhoto from "@/assets/yash-harichsandraa.jpeg.asset.json";
 import casualPhoto from "@/assets/yash-casual.jpeg";
 import resumeAsset from "@/assets/Yash_kadam_9168510029.pdf.asset.json";
 
@@ -526,7 +526,7 @@ function About() {
           <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
             className="relative">
             <div className="relative aspect-[4/5] rounded-3xl overflow-hidden glass-strong glow-cyan">
-              <img src={formalPhoto} alt="Yash — professional portrait" className="w-full h-full object-cover" />
+              <img src={(formalPhoto as { url: string }).url} alt="Yash — outdoor portrait" className="w-full h-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
               <div className="absolute bottom-6 left-6 right-6 glass rounded-xl p-4">
                 <div className="flex items-center gap-3">
@@ -537,7 +537,7 @@ function About() {
                   </div>
                 </div>
                 <div className="mt-4 grid grid-cols-3 gap-3 text-center">
-                  <Stat label="CGPA" value="9.71" />
+                  <Stat label="CGPA" value="9.86" />
                   <Stat label="Projects" value="5+" />
                   <Stat label="Focus" value="AI/ML" />
                 </div>
@@ -1419,7 +1419,7 @@ function Achievements() {
           <Metric value={4}  suffix=""   label="Deployments"      icon={<Cloud className="w-5 h-5" />} />
           <Metric value={1}  suffix=""   label="Internship"       icon={<Briefcase className="w-5 h-5" />} />
           <Metric value={1}  suffix=""   label="Research Concept" icon={<FlaskConical className="w-5 h-5" />} />
-          <Metric value={9.71} decimals={2} suffix="" label="CGPA"     icon={<GraduationCap className="w-5 h-5" />} />
+          <Metric value={9.86} decimals={2} suffix="" label="CGPA"     icon={<GraduationCap className="w-5 h-5" />} />
         </div>
       </div>
     </section>
