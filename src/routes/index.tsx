@@ -10,8 +10,8 @@ import {
 } from "lucide-react";
 
 import heroPhoto from "@/assets/yash-hero.jpeg";
-import formalPhoto from "@/assets/yash-harichsandraa.jpeg.asset.json";
-import casualPhoto from "@/assets/yash-casual.jpeg";
+import formalPhoto from "@/assets/yash-formal.jpeg";
+import newPortrait from "@/assets/yash-harichsandraa.jpeg.asset.json";
 import resumeAsset from "@/assets/Yash_kadam_9168510029.pdf.asset.json";
 
 export const Route = createFileRoute("/")({
@@ -526,7 +526,7 @@ function About() {
           <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
             className="relative">
             <div className="relative aspect-[4/5] rounded-3xl overflow-hidden glass-strong glow-cyan">
-              <img src={(formalPhoto as { url: string }).url} alt="Yash — outdoor portrait" className="w-full h-full object-cover" />
+              <img src={formalPhoto} alt="Yash — formal portrait" className="w-full h-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
               <div className="absolute bottom-6 left-6 right-6 glass rounded-xl p-4">
                 <div className="flex items-center gap-3">
@@ -1550,7 +1550,7 @@ function Contact() {
           <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
             className="relative">
             <div className="relative aspect-[4/5] rounded-3xl overflow-hidden glass-strong glow-cyan">
-              <img src={casualPhoto} alt="Yash — casual portrait" className="w-full h-full object-cover" />
+              <img src={(newPortrait as { url: string }).url} alt="Yash — outdoor portrait" className="w-full h-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent" />
               <div className="absolute bottom-6 left-6 right-6 space-y-2">
                 <ContactRow icon={<Mail className="w-4 h-4" />} label="Email" value="yashkadam2900@gmail.com" href="mailto:yashkadam2900@gmail.com" />
