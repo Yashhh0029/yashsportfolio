@@ -11,7 +11,7 @@ import {
 
 import heroPhoto from "@/assets/yash-hero.jpeg";
 import formalPhoto from "@/assets/yash-formal.jpeg";
-import newPortrait from "@/assets/yash-harichsandraa.jpeg.asset.json";
+import newPortrait from "@/assets/yash-outdoor-portrait.jpeg.asset.json";
 import resumeAsset from "@/assets/Yash_kadam_9168510029.pdf.asset.json";
 
 export const Route = createFileRoute("/")({
